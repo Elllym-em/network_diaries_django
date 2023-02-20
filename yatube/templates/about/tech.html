@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Технологии{% endblock %}
+{% block content %}
+  {% comment %} Колонки с отступом сверху и снизу {% endcomment %}
+  <div class="row">
+    <h3>С чем я могу работать</h3>
+    {% comment %}
+      Боковой блок со списком технологий 
+      Займет всю ширину блока на мобильном
+      и 25% при размерах экрана ≥768px
+    {% endcomment %}
+    <aside class="col-12 col-md-3">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          Язык программирования <span style="color:blue">Python</span>
+        </li>
+        <li class="list-group-item">
+          Фреймворк <span style="color:green">Django</span>
+        </li>
+        <li class="list-group-item">
+          Фреймворк <span style="color:purple">Bootstrap</span>
+        </li>
+        <li class="list-group-item">
+          Язык визуального оформления <span style="color:turquoise">CSS</span>
+        </li>
+        <li class="list-group-item">
+          Язык гипертекстовой разметки <span style="color:orange">HTML</span>
+        </li>
+      </ul>
+    </aside>
+    {% comment %}
+      Статья  
+      Займет всю ширину блока на мобильном
+      и 75% при размерах экрана ≥768px
+    {% endcomment %}
+    <article class="col-12 col-md-9">
+      <p>А здесь можно увидеть, какие технологии использованы при создании этого сайта.</p>
+    </article>
+  </div>
+{% endblock %}
