@@ -4,6 +4,7 @@ import tempfile
 from django.contrib.auth import get_user_model
 from django.conf import settings
 from django.core.files.uploadedfile import SimpleUploadedFile
+from django.core.cache import cache
 from django.test import Client, TestCase, override_settings
 from django.urls import reverse
 from django import forms
@@ -76,6 +77,7 @@ class PostPagesTest(TestCase):
     def setUp(self):
         self.authorized_client = Client()
         self.authorized_client.force_login(self.user)
+        cache.clear()
 
     def test_pages_uses_correct_template(self):
         """URL-адреса используют соответствующие шаблоны."""
@@ -207,6 +209,9 @@ class PostPagesTest(TestCase):
         self.assertEqual(old_list, new_list)
 
     def test_follow_unfollow(self):
+        """Проверка работы подписок/отписок
+        для авторизованного пользователя.
+        """
         new_user = User.objects.create_user(username='NewUser')
         authorized_new_client = Client()
         authorized_new_client.force_login(new_user)
@@ -249,6 +254,7 @@ class PaginatorViewsTest(TestCase):
 
     def test_on_page_contains_correct_amount_records(self):
         """На странице отображается нужное количство записей posts."""
+        cache.clear()
         pages = {
             reverse('posts:index'),
             reverse(

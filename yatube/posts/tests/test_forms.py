@@ -102,6 +102,17 @@ class PostFormsCreateTest(TestCase):
         self.assertEqual(post.text, form_data['text'])
         self.assertEqual(post.author, self.user)
         self.assertEqual(post.group.id, new_group.id)
+        old_group_response = self.authorized_client.get(reverse(
+            'posts:group_list',
+            kwargs={'slug': self.group.slug})
+        )
+        self.assertEqual(len(old_group_response.context['page_obj']), 0)
+        new_group_response = self.authorized_client.get(reverse(
+            'posts:group_list',
+            kwargs={'slug': new_group.slug})
+        )
+        self.assertEqual(len(new_group_response.context['page_obj']), 1)
+        self.assertIn(self.post, new_group_response.context['page_obj'])
 
     def test_comment_form_correct(self):
         """После успешной отправки комментарий появляется на странице поста."""
