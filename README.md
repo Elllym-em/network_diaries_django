@@ -1,3 +1,56 @@
-# hw05_final
+# Социальная сеть "Diaries"
+Социальная сеть для публикации личных дневников.
+### Для неавторизованных пользователей:
+- доступна главная страница;
+- доступна страница отдельной записи;
+- доступна страница группы с записями;
+- доступна страница автора с записями;
+- доступна и работает форма регистрации;
+- доступна и работает форма авторизации.
 
-[![CI](https://github.com/yandex-praktikum/hw05_final/actions/workflows/python-app.yml/badge.svg?branch=master)](https://github.com/yandex-praktikum/hw05_final/actions/workflows/python-app.yml)
+### Для авторизованных пользователей:
+- доступна главная страница;
+- доступна страница отдельной записи;
+- доступна страница группы с записями;
+- доступна страница автора с записями;
+- доступна возможность создания записи;
+- доступна возможность подписки на автора;
+- доступна возможность комментирование записи автора;
+- доступна возможность выйти из системы.
+
+## Стек технологий:
+- Python 3.9
+- Django 2.2.16
+- Unittest
+
+### Как запустить проект в dev-режиме:
+Клонировать репозиторий и перейти в него в командной строке:
+```
+git clone git@github.com:Elllym-em/network_diaries_django.git
+```
+```
+cd network_diaries_django
+```
+Cоздать и активировать виртуальное окружение:
+```
+python3 -m venv env
+```
+* Если у вас Linux/macOS
+    ```
+    source env/bin/activate
+    ```
+* Если у вас windows
+    ```
+    source env/scripts/activate
+    ```
+Установить зависимости из файла requirements.txt:
+```
+pip install -r requirements.txt
+```
+Запустить проект:
+```
+python3 manage.py runserver
+```
+
+**Автор:**
+[Elina Mustafaeva](https://github.com/Elllym-em)
